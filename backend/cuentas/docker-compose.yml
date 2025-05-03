@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres_cuentas
+    environment:
+      POSTGRES_DB: cuentas_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./base.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - cuentas-network
+
+  api:
+    build: .
+    container_name: cuentas_api
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/cuentas_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "8080:8080"
+    networks:
+      - cuentas-network
+
+networks:
+  cuentas-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

@@ -1,0 +1,458 @@
+{
+	"info": {
+		"_postman_id": "2d431ae6-8dbe-45c3-b1f4-0de55d33c95d",
+		"name": "Cuentas API",
+		"description": "Colección para probar la API bancaria con capacidades CRUD para clientes, cuentas y movimientos.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "237271",
+		"_collection_link": "https://litol-team.postman.co/workspace/22cb5c4f-8d02-4154-9574-1ddd773a1cab/collection/237271-2d431ae6-8dbe-45c3-b1f4-0de55d33c95d?action=share&source=collection_link&creator=237271"
+	},
+	"item": [
+		{
+			"name": "Clientes",
+			"item": [
+				{
+					"name": "Obtener todos los clientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clientes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes"
+							]
+						},
+						"description": "Obtiene la lista de todos los clientes registrados en el sistema."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener cliente por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clientes/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes",
+								"1"
+							]
+						},
+						"description": "Obtiene un cliente específico por su ID."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener cliente por identificación",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clientes/identificacion/1234567890",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes",
+								"identificacion",
+								"1234567890"
+							]
+						},
+						"description": "Obtiene un cliente específico por su número de identificación."
+					},
+					"response": []
+				},
+				{
+					"name": "Crear cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"persona\": {\n        \"identificacion\": \"1234567890\",\n        \"nombre\": \"Juan Pérez\",\n        \"genero\": \"M\",\n        \"edad\": 30,\n        \"direccion\": \"Av. Principal 123\",\n        \"telefono\": \"555-1234\"\n    },\n    \"contrasena\": \"password123\",\n    \"estado\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clientes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes"
+							]
+						},
+						"description": "Crea un nuevo cliente con sus datos personales."
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar cliente",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"persona\": {\n        \"identificacion\": \"1234567890\",\n        \"nombre\": \"Juan Pérez González\",\n        \"genero\": \"M\",\n        \"edad\": 31,\n        \"direccion\": \"Calle Nueva 456\",\n        \"telefono\": \"555-5678\"\n    },\n    \"contrasena\": \"nuevaPassword123\",\n    \"estado\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clientes/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes",
+								"1"
+							]
+						},
+						"description": "Actualiza los datos de un cliente existente por su ID."
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clientes/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes",
+								"1"
+							]
+						},
+						"description": "Elimina (desactiva) un cliente existente por su ID."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para administrar los clientes del banco."
+		},
+		{
+			"name": "Cuentas",
+			"item": [
+				{
+					"name": "Obtener todas las cuentas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cuentas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cuentas"
+							]
+						},
+						"description": "Obtiene la lista de todas las cuentas registradas en el sistema."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener cuenta por número",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cuentas/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cuentas",
+								"1"
+							]
+						},
+						"description": "Obtiene una cuenta específica por su número."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener cuentas por cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cuentas/cliente/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cuentas",
+								"cliente",
+								"1"
+							]
+						},
+						"description": "Obtiene todas las cuentas asociadas a un cliente específico."
+					},
+					"response": []
+				},
+				{
+					"name": "Crear cuenta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tipoCuenta\": \"AHORRO\",\n    \"saldoInicial\": 1000.00,\n    \"estado\": true,\n    \"clienteId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cuentas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cuentas"
+							]
+						},
+						"description": "Crea una nueva cuenta para un cliente existente."
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar cuenta",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tipoCuenta\": \"CORRIENTE\",\n    \"saldoInicial\": 1000.00,\n    \"estado\": true,\n    \"clienteId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cuentas/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cuentas",
+								"1"
+							]
+						},
+						"description": "Actualiza los datos de una cuenta existente por su número."
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar cuenta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cuentas/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cuentas",
+								"1"
+							]
+						},
+						"description": "Elimina (desactiva) una cuenta existente por su número."
+					},
+					"response": []
+				},
+				{
+					"name": "Generar estado de cuenta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fechaInicio\": \"2025-04-01\",\n    \"fechaFin\": \"2025-04-30\",\n    \"clienteId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cuentas/estado-cuenta",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cuentas",
+								"estado-cuenta"
+							]
+						},
+						"description": "Genera un estado de cuenta para un cliente específico en un rango de fechas.\nDevuelve la información en formato JSON y PDF (Base64)."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para administrar las cuentas bancarias."
+		},
+		{
+			"name": "Movimientos",
+			"item": [
+				{
+					"name": "Obtener todos los movimientos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/movimientos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"movimientos"
+							]
+						},
+						"description": "Obtiene la lista de todos los movimientos registrados en el sistema."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener movimiento por código",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/movimientos/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"movimientos",
+								"1"
+							]
+						},
+						"description": "Obtiene un movimiento específico por su código."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener movimientos por cuenta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/movimientos/cuenta/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"movimientos",
+								"cuenta",
+								"1"
+							]
+						},
+						"description": "Obtiene todos los movimientos asociados a una cuenta específica."
+					},
+					"response": []
+				},
+				{
+					"name": "Realizar depósito",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tipoMovimiento\": \"DEPOSITO\",\n    \"valor\": 500.00,\n    \"numeroCuenta\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/movimientos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"movimientos"
+							]
+						},
+						"description": "Realiza un depósito en una cuenta existente."
+					},
+					"response": []
+				},
+				{
+					"name": "Realizar retiro",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tipoMovimiento\": \"RETIRO\",\n    \"valor\": 200.00,\n    \"numeroCuenta\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/movimientos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"movimientos"
+							]
+						},
+						"description": "Realiza un retiro de una cuenta existente.\nSi el saldo es insuficiente, la API responderá con un error \"Saldo no disponible\"."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para administrar los movimientos bancarios."
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:7721/api",
+			"type": "string"
+		}
+	]
+}
